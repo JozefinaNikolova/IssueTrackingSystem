@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue Tracker Home</title>
+    <link rel="stylesheet" href="homeStyle.css"/>
+</head>
+<body ng-app="issueTracker.home">
+<div id="wrapper">
+    <header id="page-header">Enter the issue tracking system</header>
+    <p id="header-text">It is necessary to log in your account in order to use the system.</p>
+    <form id="register">
+        <header>Are you new? <span id="reg-color">Register</span></header>
+        <p><input type="text" required="true" name="username" placeholder="Username" ng-model="regUser.username"/></p>
+        <p><input type="email" required="true" name="email" placeholder="Email" ng-model="regUser.email"/></p>
+        <p><input type="password" required="true" name="password" placeholder="Password" ng-model="regUser.password"/></p>
+        <p><input type="password" required="true" name="confirm-password" placeholder="Confirm password" ng-model="regUser.confirmPassword"/></p>
+        Gender:
+        <input type="radio" name="gender" ng-model="regUser.gender"/>Male
+        <input type="radio" name="gender" ng-model="regUser.gender"/>Female
+        <button ng-click="registerUser(regUser)" id="registerBtn">Register</button>
+    </form>
+    <form id="log-in">
+        <header>Already have an account? Login</header>
+        <p><input type="text" required="true" name="user-name" placeholder="Username" ng-model="logUser.username"/></p>
+        <p><input type="password" required="true" name="password" placeholder="Password" ng-model="logUser.password"/></p>
+        <button ng-click="loginUser(logUser)" id="loginBtn">Login</button>
+    </form>
+</div>
+</body>
+</html>

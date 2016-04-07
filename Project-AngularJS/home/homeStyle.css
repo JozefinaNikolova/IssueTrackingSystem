@@ -1,0 +1,97 @@
+body {
+    background-color: #eeeeee;
+    padding: 20px;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+#page-header {
+    text-align: center;
+    font-size: 30px;
+}
+
+#header-text{
+    text-align: center;
+}
+
+div > p {
+    color: #202060;
+}
+
+form{
+    width: 292px;
+    padding: 15px;
+}
+
+#register{
+    float: left;
+    margin-left: 20%;
+}
+
+#log-in{
+    float: left;
+    margin-left: 10%;
+    color: white;
+    height: 262px;
+    background-color: #449A44;
+}
+
+form > header {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#register header {
+    color: #a6a6a6;
+}
+
+#reg-color {
+    color: #449A44;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width: 95%;
+    height: 30px;
+    padding-left: 10px;
+}
+
+button {
+    padding: 5px 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#registerBtn {
+    background-color: #449A44;
+    color: white;
+    border: 3px solid white;
+    float: right;
+    margin-top: 10px;
+}
+
+#loginBtn {
+    background-color: #449A44;
+    color: white;
+    border: 3px solid white;
+    float: right;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+a:visited {
+    color: orange;
+}
+
+a{
+    float: right;
+    margin-top: 2px;
+}
+
+#checkbox{
+    width: 130px;
+    margin-right: 0;
+    margin-top: 3px;
+    display: inline-block;
+}
