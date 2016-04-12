@@ -1,4 +1,4 @@
-angular.module('issueTracker.dashboard', ['issueTracker.issues.issues'])
+angular.module('issueTracker.dashboard', ['issueTracker.services.issues'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/dashboard', {
             templateUrl: 'dashboard/dashboard.html',
@@ -12,6 +12,7 @@ angular.module('issueTracker.dashboard', ['issueTracker.issues.issues'])
             issues.getUserIssues(10, 1, 'DueDate desc')
                 .then(function (userIssues) {
                     console.log(userIssues);
+                    $scope.issues = userIssues.Issues;
                 })
         }
     ]);

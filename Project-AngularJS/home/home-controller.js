@@ -1,4 +1,4 @@
-angular.module('issueTracker.home', ['issueTracker.users.authentication'])
+angular.module('issueTracker.home', ['issueTracker.services.authentication'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: 'home/guestHome.html',
@@ -12,16 +12,17 @@ angular.module('issueTracker.home', ['issueTracker.users.authentication'])
         function($scope, $location, authentication) {
             $scope.loginUser = function (user) {
                 authentication.loginUser(user)
-                    .then(function(loggedInUser){
-                        console.log(loggedInUser);
+                    .then(function(data){
+                        authentication.setCredentials(data);
                         $location.path('/dashboard');
                     })
             };
 
             $scope.registerUser = function (user) {
                 authentication.registerUser(user)
-                    .then(function(registeredUser) {
-                        console.log(registeredUser);
+                    .then(function(data) {
+                        authentication.setCredentials(data);
+                        $location.path('/dashboard');
                     });
             };
         }]);
