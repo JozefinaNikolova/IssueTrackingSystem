@@ -1,11 +1,11 @@
-angular.module('issueTracker.project', ['issueTracker.services.projects'])
+angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/add-project', {
             templateUrl: 'projects/Add-new-project.html',
-            controller: 'ProjectController'
+            controller: 'AddProjectController'
         })
     }])
-    .controller('ProjectController', [
+    .controller('AddProjectController', [
         '$scope',
         'projects',
         function($scope, projects){

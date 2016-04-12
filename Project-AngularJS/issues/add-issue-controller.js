@@ -1,11 +1,11 @@
-angular.module('issueTracker.issue', ['issueTracker.services.issues'])
+angular.module('issueTracker.addIssue', ['issueTracker.services.issues'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/add-issue', {
             templateUrl: 'issues/Add-new-issue.html',
-            controller: 'IssueController'
+            controller: 'AddIssueController'
         })
     }])
-    .controller('IssueController', [
+    .controller('AddIssueController', [
         '$scope',
         'issues',
         function($scope, issues){
