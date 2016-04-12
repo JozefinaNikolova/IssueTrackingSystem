@@ -1,0 +1,41 @@
+<div class=jumbotron>
+<a href="#/dashboard"><button class="btn-lg btn-success">Dashboard</button></a>
+<a href="#/projects"><button class="btn-lg btn-success">Projects</button></a>
+<h2 style="margin-top: 20px"> Add new Issue</h2>
+<form name="addNewIssueForm">
+<div class="form-group">
+    <label for="issue-title">Title</label>
+    <input type="text" class="form-control" id="issue-title" placeholder="Issue Title" ng-model="issue.Title">
+  </div>
+  <div class="form-group">
+    <label for="issue-assignee">Assignee</label>
+    <input type="text" class="form-control" id="issue-assignee" placeholder="Assignee Id" ng-model="issue.AssigneeId">
+  </div>
+  <div class="form-group">
+    <label for="issue-project-id">Project</label>
+      <input type="text" class="form-control" id="issue-project-id" placeholder="Project Id" ng-model="issue.ProjectId">
+  </div>
+  <div class="form-group">
+    <label for="issue-priority">Priority</label>
+    <select class="form-control" id="issue-priority">
+      <option ng-model="issue.PriorityId" value="0">Low</option>
+      <option ng-model="issue.PriorityId" value="1">Urgent</option>
+      <option ng-model="issue.PriorityId" value="2">Medium</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="issue-due-date">Due Date</label>
+    <input type="date" class="form-control" id="issue-due-date" placeholder="dd/mm/yyyy" ng-model="issue.DueDate">
+  </div>
+   <div class="form-group">
+    <label for="issue-labels">Labels (comma separated)</label>
+    <input type="text" class="form-control" id="issue-labels" placeholder="Labels" value="Soft" ng-model="issue.Labels">
+    <br>
+  </div>
+   <div class="form-group">
+    <label for="issue-description">Description</label>
+    <textarea class="form-control" id="issue-description" placeholder="Description" ng-model="issue.Description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success" ng-disabled="addNewIssueForm.$invalid" ng-click="addNewIssue(issue)">Add Issue</button>
+</form>
+</div>
