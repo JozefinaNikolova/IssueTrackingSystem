@@ -5,10 +5,13 @@ angular.module('issueTracker.issues.issues', [])
         'BASE_URL',
         function($http, $q, BASE_URL) {
 
+            var authHeader = {headers: {Authorization: 'Bearer ' + sessionStorage.authToken}};
+
             function getUserIssues(pageSize, pageNumber, orderBy) {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
+                $http.get(BASE_URL + 'Issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy,
+                    authHeader)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
