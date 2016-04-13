@@ -12,23 +12,29 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
         function($scope, $location, projects){
             $scope.addNewProject = function (project) {
                 var priorities = [],
-                    prioritiesSplit = project.Priorities.split(', '),
+                    prioritiesSplit,
                     labels =[],
-                    labelsSplit = project.Labels.split(', ');
+                    labelsSplit;
 
-                for (var i = 1; i <= prioritiesSplit.length; i++) {
-                    priorities.push({
-                        Id: i,
-                        Name: prioritiesSplit[i]
-                    });
-                };
+                if(project.Priorities){
+                    prioritiesSplit = project.Priorities.split(', ')
+                    for (var i = 1; i <= prioritiesSplit.length; i++) {
+                        priorities.push({
+                            Id: i,
+                            Name: prioritiesSplit[i]
+                        });
+                    };
+                }
 
-                for (var i = 1; i <= labelsSplit.length; i++) {
-                    labels.push({
-                        Id: i,
-                        Name: labelsSplit[i]
-                    });
-                };
+                if(project.Labels){
+                    labelsSplit = project.Labels.split(', ')
+                    for (var i = 1; i <= labelsSplit.length; i++) {
+                        labels.push({
+                            Id: i,
+                            Name: labelsSplit[i]
+                        });
+                    };
+                }
 
                 project.Priorities = priorities;
                 project.Labels = labels;
