@@ -38,7 +38,7 @@ angular.module('issueTracker.services.authentication', [])
 
             function logout() {
                 var deferred = $q.defer();
-                $http.post(serviceUrl + 'api/Account/Logout')
+                $http.post(BASE_URL + 'api/Account/Logout', null)
                     .success(function (data) {
                         deferred.resolve(data);
                     })
