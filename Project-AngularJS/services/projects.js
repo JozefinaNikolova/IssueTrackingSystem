@@ -8,7 +8,7 @@ angular.module('issueTracker.services.projects', [])
             function getAllProjects(){
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Projects/')
+                $http.get(BASE_URL + 'projects/')
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -21,7 +21,7 @@ angular.module('issueTracker.services.projects', [])
             function getProjectById(id){
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Projects/' + id)
+                $http.get(BASE_URL + 'projects/' + id)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -34,10 +34,10 @@ angular.module('issueTracker.services.projects', [])
             function addProject(data){
                 var deferred = $q.defer();
 
-                $http.post(BASE_URL + 'Projects/',
+                $http.post(BASE_URL + 'projects/',
                     data)
                     .then(function(response) {
-                        console.log(response.date);
+                        console.log(response.data);
                         deferred.resolve(response.data);
                     }, function(error) {
                         deferred.reject(error);
@@ -49,7 +49,7 @@ angular.module('issueTracker.services.projects', [])
             function editProjectById(id, data){
                 var deferred = $q.defer();
 
-                $http.put(BASE_URL + 'Projects/' + id,
+                $http.put(BASE_URL + 'projects/' + id,
                     data)
                     .then(function(response) {
                         deferred.resolve(response.data);

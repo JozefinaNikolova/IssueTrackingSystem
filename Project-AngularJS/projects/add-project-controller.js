@@ -21,7 +21,7 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
                     for (var i = 1; i <= prioritiesSplit.length; i++) {
                         priorities.push({
                             Id: i,
-                            Name: prioritiesSplit[i]
+                            Name: prioritiesSplit[i - 1]
                         });
                     };
                 }
@@ -31,7 +31,7 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
                     for (var i = 1; i <= labelsSplit.length; i++) {
                         labels.push({
                             Id: i,
-                            Name: labelsSplit[i]
+                            Name: labelsSplit[i - 1]
                         });
                     };
                 }

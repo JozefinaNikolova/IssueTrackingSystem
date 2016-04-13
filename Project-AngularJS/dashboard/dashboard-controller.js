@@ -11,7 +11,7 @@ angular.module('issueTracker.dashboard', ['issueTracker.services.issues', 'issue
         'issues',
         'authentication',
         function($scope, $location, issues, authentication){
-            issues.getUserIssues(10, 1, 'DueDate desc')
+            issues.getUserIssues(20, 1, 'DueDate desc')
                 .then(function (userIssues) {
                     console.log(userIssues);
                     $scope.issues = userIssues.Issues;

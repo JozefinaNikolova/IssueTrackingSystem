@@ -7,10 +7,31 @@ angular.module('issueTracker.addIssue', ['issueTracker.services.issues'])
     }])
     .controller('AddIssueController', [
         '$scope',
+        '$location',
         'issues',
-        function($scope, issues){
+        function($scope, $location, issues){
             $scope.addNewIssue = function (issue) {
-                issues.addIssue(issue);
+                var labels =[],
+                    labelsSplit;
+
+                if(issue.Labels){
+                    labelsSplit = issue.Labels.split(', ');
+                    for (var i = 1; i <= labelsSplit.length; i++) {
+                        labels.push({
+                            Id: i,
+                            Name: labelsSplit[i - 1]
+                        });
+                    }
+                }
+
+                issue.Labels = labels;
+                issue.PriorityId = issue.PriorityId || 1;
+
+
+                issues.addIssue(issue)
+                    .then(function (success) {
+                        $location.path('/dashboard');
+                    });
             }
         }
     ]);

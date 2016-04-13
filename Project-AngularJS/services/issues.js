@@ -8,7 +8,7 @@ angular.module('issueTracker.services.issues', [])
             function getUserIssues(pageSize, pageNumber, orderBy) {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
+                $http.get(BASE_URL + 'issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -21,7 +21,7 @@ angular.module('issueTracker.services.issues', [])
             function getProjectsIssuesById(id) {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Projects/' + id +'/Issues')
+                $http.get(BASE_URL + 'projects/' + id +'/issues')
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -34,7 +34,7 @@ angular.module('issueTracker.services.issues', [])
             function getIssuesByFilter(pageSize, pageNumber, filter, value) {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Issues/?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&' + filter + '=' + value)
+                $http.get(BASE_URL + 'issues/?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&' + filter + '=' + value)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -47,7 +47,7 @@ angular.module('issueTracker.services.issues', [])
             function getIssuesById(id) {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Issues/' + id)
+                $http.get(BASE_URL + 'issues/' + id)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -59,8 +59,7 @@ angular.module('issueTracker.services.issues', [])
 
             function addIssue(data) {
                 var deferred = $q.defer();
-
-                $http.post(BASE_URL + 'Issues/', data)
+                $http.post(BASE_URL + 'issues/', data)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -73,7 +72,7 @@ angular.module('issueTracker.services.issues', [])
             function editIssueById(id, data) {
                 var deferred = $q.defer();
 
-                $http.put(BASE_URL + 'Issues/' + id, data)
+                $http.put(BASE_URL + 'issues/' + id, data)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -86,7 +85,7 @@ angular.module('issueTracker.services.issues', [])
             function editIssueStatus(id, statusId, data) {
                 var deferred = $q.defer();
 
-                $http.put(BASE_URL + 'Issues/' + id +'/changestatus?statusid=' + statusId, data)
+                $http.put(BASE_URL + 'issues/' + id +'/changestatus?statusid=' + statusId, data)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -99,7 +98,7 @@ angular.module('issueTracker.services.issues', [])
             function getIssueComments(id) {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Issues/' + id + '/comments')
+                $http.get(BASE_URL + 'issues/' + id + '/comments')
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -112,7 +111,7 @@ angular.module('issueTracker.services.issues', [])
             function addCommentToIssue(id, text) {
                 var deferred = $q.defer();
 
-                $http.put(BASE_URL + 'Issues/' + id + '/comments', text)
+                $http.put(BASE_URL + 'issues/' + id + '/comments', text)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
