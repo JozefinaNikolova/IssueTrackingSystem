@@ -1,0 +1,37 @@
+<div class="jumbotron" style="height: 100%">
+    <a href="#/dashboard"><button class="btn-lg btn-success">Dashboard</button></a>
+    <a href="#/projects"><button class="btn-lg btn-success">Projects</button></a>
+    <h1>Project Page</h1>
+    <div class="modal-body row">
+        <div class="col-md-5">
+            <p>Project Name: {{project.Name}}</p>
+            <p>Description: {{project.Description}}</p>
+            <p>LeadId: {{project.LeadId}}</p>
+            <p>Labels: {{project.Labels}}</p>
+            <p>Priorities: {{project.Priorities}}</p>
+
+            <a href="#/projects/{{project.Id}}/edit"><button class="btn btn-md btn-success">Edit</button></a>
+            <a href="#/#/projects/{{project.Id}}/add-issue"><button class="btn btn-md btn-success">Add New Issue</button></a>
+        </div>
+        <div class="col-md-5">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td>Issue</td>
+                    <td>Description</td>
+                    <td>Project</td>
+                    <td>Due Date</td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="issue in issues">
+                <tr>
+                    <td>{{issue.Title}}</td>
+                    <td>{{issue.Description}}</td>
+                    <td>{{issue.Project.Name}}</td>
+                    <td>{{issue.DueDate}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

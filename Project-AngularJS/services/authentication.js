@@ -10,7 +10,6 @@ angular.module('issueTracker.services.authentication', [])
 
                 $http.post(BASE_URL + 'api/Account/Register', user)
                     .then(function(response) {
-                        console.log(response.data);
                         deferred.resolve(response.data);
 
                         $http.get(BASE_URL + 'users/me');
