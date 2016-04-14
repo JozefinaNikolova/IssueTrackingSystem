@@ -17,7 +17,7 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
                     labelsSplit;
 
                 if(project.Priorities){
-                    prioritiesSplit = project.Priorities.split(', ')
+                    prioritiesSplit = project.Priorities.split(', ');
                     for (var i = 1; i <= prioritiesSplit.length; i++) {
                         priorities.push({
                             Id: i,
@@ -27,7 +27,7 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
                 }
 
                 if(project.Labels){
-                    labelsSplit = project.Labels.split(', ')
+                    labelsSplit = project.Labels.split(', ');
                     for (var i = 1; i <= labelsSplit.length; i++) {
                         labels.push({
                             Id: i,

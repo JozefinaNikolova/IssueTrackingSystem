@@ -8,9 +8,10 @@ angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'iss
     .controller('ViewProjectController', [
         '$scope',
         '$routeParams',
+        '$location',
         'issues',
         'projects',
-        function($scope, $routeParams, issues, projects){
+        function($scope, $routeParams, $location, issues, projects){
             var currentId = $routeParams.id;
             projects.getProjectById(currentId)
                 .then(function (data) {
@@ -30,11 +31,5 @@ angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'iss
                     $scope.project = data;
                     console.log(data);
                 });
-
-            issues.getProjectsIssuesById(currentId)
-                .then(function (data) {
-                    $scope.issues = data;
-                    console.log(data);
-                })
         }
     ]);
