@@ -1,4 +1,4 @@
-angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
+angular.module('issueTracker.addProject', ['issueTracker.services.projects', 'issueTracker.services.users'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/add-project', {
             templateUrl: 'projects/Add-new-project.html',
@@ -9,7 +9,13 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects'])
         '$scope',
         '$location',
         'projects',
-        function($scope, $location, projects){
+        'users',
+        function($scope, $location, projects, users){
+            users.getAllUsers()
+                .then(function (data) {
+                    $scope.users = data;
+                });
+
             $scope.addNewProject = function (project) {
                 var priorities = [],
                     prioritiesSplit,

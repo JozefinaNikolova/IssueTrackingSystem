@@ -8,9 +8,14 @@
     <input type="text" required="required" class="form-control" id="project-name" placeholder="Project Name" ng-model="project.Name">
   </div>
   <div class="form-group">
-    <label for="project-team-leader">Leader</label>
-      <input type="text" class="form-control" id="project-team-leader" placeholder="Team Leader Id" ng-model="project.LeadId">
-    </select>
+      <label for="project-leader">Leader</label>
+      <select id="project-leader" class="form-control" ng-model="project.LeadId">
+          <option ng-selected="{{user.value == project.LeadId}}"
+                  ng-repeat="user in users"
+                  value="{{user.Id}}">
+              {{user.Username}}
+          </option>
+      </select>
   </div>
   <div class="form-group">
     <label for="project-key">Project Key</label>

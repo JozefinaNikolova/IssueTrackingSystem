@@ -11,6 +11,7 @@ angular.module('issueTracker.allProjects', ['issueTracker.services.projects'])
         function($scope, projects){
             projects.getAllProjects()
                 .then(function (data) {
+                    console.log(data);
                     $scope.allProjects = data;
                 });
         }

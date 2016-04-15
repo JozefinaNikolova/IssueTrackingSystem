@@ -14,8 +14,8 @@
     </div>
     <div class="form-group">
       <label for="project-leader">Leader</label>
-      <select id="project-leader" class="form-control">
-      	<option ng-model="editedPriject.LeadId">{{project.Lead.Username}}</option>
+      <select id="project-leader" class="form-control" ng-model="project.LeadId" required="required">
+      	<option value="{{project.Lead.Id}}">{{project.Lead.Username}}</option>
       </select>
     </div>
     <div class="form-group">

@@ -29,6 +29,11 @@ angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'iss
                     data.Priorities = priorities.join(', ');
 
                     $scope.project = data;
+                });
+
+            issues.getProjectsIssuesById(currentId)
+                .then(function (data) {
+                    $scope.issues = data;
                     console.log(data);
                 });
         }

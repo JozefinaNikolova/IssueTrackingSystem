@@ -8,8 +8,9 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects'])
     .controller('EditProjectController', [
         '$scope',
         '$routeParams',
+        '$location',
         'projects',
-        function($scope, $routeParams, projects){
+        function($scope, $routeParams, $location, projects){
             var currentId = $routeParams.id;
             projects.getProjectById(currentId)
                 .then(function (data) {
@@ -30,7 +31,6 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects'])
                 });
 
             $scope.editProject = function (project) {
-                console.log('in func')
                 var priorities = [],
                     prioritiesSplit,
                     labels =[],
