@@ -8,12 +8,13 @@
     <input type="text" class="form-control" id="issue-title" placeholder="Issue Title" ng-model="issue.Title">
   </div>
   <div class="form-group">
-    <label for="issue-assignee">Assignee</label>
-    <input type="text" class="form-control" id="issue-assignee" placeholder="Assignee Id" ng-model="issue.AssigneeId">
-  </div>
-  <div class="form-group">
-    <label for="issue-project-id">Project</label>
-      <input type="number" class="form-control" id="issue-project-id" placeholder="Project Id" ng-model="issue.ProjectId">
+      <label for="issue-assignee">Assignee</label>
+      <select id="issue-assignee" class="form-control" ng-model="issue.AssigneeId">
+          <option ng-repeat="user in users"
+                  value="{{user.Id}}">
+              {{user.Username}}
+          </option>
+      </select>
   </div>
   <div class="form-group">
     <label for="issue-priority">Priority</label>
