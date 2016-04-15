@@ -25,6 +25,13 @@ angular.module('issueTracker.addIssue', [
                     $scope.projects = data;
                 });
 
+            $scope.getPriorities = function () {
+                projects.getProjectById($scope.issue.ProjectId)
+                    .then(function (data) {
+                        $scope.priorities = data.Priorities;
+                    })
+            };
+
             $scope.addNewIssue = function (issue) {
                 var labels =[],
                     labelsSplit;
@@ -40,8 +47,6 @@ angular.module('issueTracker.addIssue', [
                 }
 
                 issue.Labels = labels;
-                issue.PriorityId = issue.PriorityId || 1;
-
 
                 issues.addIssue(issue)
                     .then(function (success) {
