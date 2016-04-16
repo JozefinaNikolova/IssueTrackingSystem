@@ -8,9 +8,8 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
     .controller('ViewIssueController', [
         '$scope',
         '$routeParams',
-        '$location',
         'issues',
-        function($scope, $routeParams, $location, issues){
+        function($scope, $routeParams, issues){
             var currentId = $routeParams.id;
             issues.getIssuesById(currentId)
                 .then(function (data) {

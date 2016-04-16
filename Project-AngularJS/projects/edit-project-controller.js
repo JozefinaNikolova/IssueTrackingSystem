@@ -44,10 +44,9 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'i
 
                 if(project.Priorities){
                     prioritiesSplit = project.Priorities.split(', ');
-                    for (var i = 1; i <= prioritiesSplit.length; i++) {
+                    for (var i = 0; i < prioritiesSplit.length; i++) {
                         priorities.push({
-                            Id: i,
-                            Name: prioritiesSplit[i - 1]
+                            Name: prioritiesSplit[i]
                         });
                     };
                 }
