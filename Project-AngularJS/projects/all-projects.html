@@ -1,7 +1,14 @@
+<style>
+    #add-project-btn{
+        margin-bottom: 20px;
+    }
+</style>
+
 <div class="jumbotron" style="height: 100%">
     <a href="#/dashboard"><button class="btn-lg btn-success">Dashboard</button></a>
     <a href="#/projects"><button class="btn-lg btn-success">Projects</button></a>
     <h1>Projects</h1>
+    <a href="#/add-project"><button class="btn btn-lg btn-success" id="add-project-btn">Add New Project</button></a>
     <div ng-repeat="project in allProjects">
         <p>{{project.Name}} <a href="#/projects/{{project.Id}}"><button class="btn btn-info">View</button></a></p>
     </div>
