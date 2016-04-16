@@ -11,7 +11,7 @@
             <p>Priorities: {{project.Priorities}}</p>
 
             <a href="#/projects/{{project.Id}}/edit"><button class="btn btn-md btn-success">Edit</button></a>
-            <a href="#/#/projects/{{project.Id}}/add-issue"><button class="btn btn-md btn-success">Add New Issue</button></a>
+            <a href="#/projects/{{project.Id}}/add-issue"><button class="btn btn-md btn-success">Add New Issue</button></a>
         </div>
         <div class="col-md-5">
             <table class="table table-striped">
@@ -25,7 +25,7 @@
                 </thead>
                 <tbody ng-repeat="issue in issues">
                 <tr>
-                    <td>{{issue.Title}}</td>
+                    <td><a href="#/issues/{{issue.Id}}">{{issue.Title}}</a></td>
                     <td>{{issue.Description}}</td>
                     <td>{{issue.Project.Name}}</td>
                     <td>{{issue.DueDate}}</td>

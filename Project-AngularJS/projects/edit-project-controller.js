@@ -1,4 +1,4 @@
-angular.module('issueTracker.editProject', ['issueTracker.services.projects'])
+angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'issueTracker.services.users'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/projects/:id/edit', {
             templateUrl: 'projects/Edit-project.html',
@@ -10,7 +10,13 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects'])
         '$routeParams',
         '$location',
         'projects',
-        function($scope, $routeParams, $location, projects){
+        'users',
+        function($scope, $routeParams, $location, projects, users){
+            users.getAllUsers()
+                .then(function (data) {
+                    $scope.users = data;
+                });
+
             var currentId = $routeParams.id;
             projects.getProjectById(currentId)
                 .then(function (data) {

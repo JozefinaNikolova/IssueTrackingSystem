@@ -10,8 +10,7 @@
   <div class="form-group">
       <label for="project-leader">Leader</label>
       <select id="project-leader" class="form-control" ng-model="project.LeadId">
-          <option ng-selected="{{user.value == project.LeadId}}"
-                  ng-repeat="user in users"
+          <option ng-repeat="user in users"
                   value="{{user.Id}}">
               {{user.Username}}
           </option>
