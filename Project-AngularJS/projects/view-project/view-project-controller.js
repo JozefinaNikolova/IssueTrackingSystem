@@ -1,7 +1,7 @@
 angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'issueTracker.services.projects'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/projects/:id', {
-            templateUrl: 'projects/view-project.html',
+            templateUrl: 'projects/view-project/view-project.html',
             controller: 'ViewProjectController'
         })
     }])

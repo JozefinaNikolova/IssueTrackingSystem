@@ -1,7 +1,7 @@
 angular.module('issueTracker.home', ['issueTracker.services.authentication'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
-            templateUrl: 'home/guestHome.html',
+            templateUrl: 'home/guest-home/guest-home.html',
             controller: 'HomeController'
         })
     }])

@@ -1,7 +1,7 @@
 angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issueTracker.services.users', 'issueTracker.services.projects'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/issues/:id/edit', {
-            templateUrl: 'issues/edit-issue.html',
+            templateUrl: 'issues/edit-issue/edit-issue.html',
             controller: 'EditIssueController'
         })
     }])
