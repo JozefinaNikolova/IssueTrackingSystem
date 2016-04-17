@@ -14,6 +14,7 @@ angular.module('issueTracker.dashboard', ['issueTracker.services.issues', 'issue
             issues.getUserIssues(20, 1, 'DueDate desc')
                 .then(function (userIssues) {
                     $scope.issues = userIssues.Issues;
+                    console.log(userIssues);
                 });
         }
     ]);
