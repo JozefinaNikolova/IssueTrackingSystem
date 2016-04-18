@@ -15,7 +15,8 @@ angular.module('issueTracker.addIssueToProject', [
         'issues',
         'users',
         'projects',
-        function($scope, $location, $routeParams, issues, users, projects){
+        'notifyService',
+        function($scope, $location, $routeParams, issues, users, projects, notifyService){
             var currentId = $routeParams.id;
 
             users.getAllUsers()
@@ -47,10 +48,15 @@ angular.module('issueTracker.addIssueToProject', [
                 issue.Labels = labels;
                 issue.ProjectId = currentId;
 
+
                 issues.addIssue(issue)
                     .then(function (success) {
-                        $location.path('/projects/' + currentId);
-                    });
+                            $location.path('/projects/' + currentId);
+                            notifyService.showSuccess('Issue added successfully!');
+                        },
+                        function (error) {
+                            notifyService.showError('Issue add unsuccessful', error);
+                        });
             }
         }
     ]);

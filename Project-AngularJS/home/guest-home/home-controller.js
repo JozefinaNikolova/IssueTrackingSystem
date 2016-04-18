@@ -9,12 +9,17 @@ angular.module('issueTracker.home', ['issueTracker.services.authentication'])
         '$scope',
         '$location',
         'authentication',
-        function($scope, $location, authentication) {
+        'notifyService',
+        function($scope, $location, authentication, notifyService) {
             $scope.loginUser = function (user) {
                 authentication.loginUser(user)
                     .then(function(data){
                         authentication.setCredentials(data);
                         $location.path('/dashboard');
+                        notifyService.showSuccess('User logged in successfully!');
+                    },
+                        function(error){
+                            notifyService.showError('Unsuccessful log in.', error);
                     })
             };
 
@@ -23,6 +28,10 @@ angular.module('issueTracker.home', ['issueTracker.services.authentication'])
                     .then(function(data) {
                         authentication.setCredentials(data);
                         $location.path('/dashboard');
-                    });
+                        notifyService.showSuccess('User registered successfully!');
+                    },
+                        function(error){
+                            notifyService.showError('Unsuccessful registration.', error);
+                        });
             };
         }]);

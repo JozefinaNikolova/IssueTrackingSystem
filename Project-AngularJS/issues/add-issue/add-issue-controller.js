@@ -14,7 +14,8 @@ angular.module('issueTracker.addIssue', [
         'issues',
         'users',
         'projects',
-        function($scope, $location, issues, users, projects){
+        'notifyService',
+        function($scope, $location, issues, users, projects, notifyService){
             users.getAllUsers()
                 .then(function (data) {
                     $scope.users = data;
@@ -51,7 +52,11 @@ angular.module('issueTracker.addIssue', [
                 issues.addIssue(issue)
                     .then(function (success) {
                         $location.path('/dashboard');
-                    });
+                        notifyService.showSuccess('Issue added successfully!');
+                    },
+                        function (error) {
+                            notifyService.showError('Issue add unsuccessful', error);
+                        });
             }
         }
     ]);

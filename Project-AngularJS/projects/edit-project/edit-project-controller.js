@@ -11,7 +11,8 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'i
         '$location',
         'projects',
         'users',
-        function($scope, $routeParams, $location, projects, users){
+        'notifyService',
+        function($scope, $routeParams, $location, projects, users, notifyService){
             users.getAllUsers()
                 .then(function (data) {
                     $scope.users = data;
@@ -67,7 +68,11 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'i
                 projects.editProjectById(currentId, project)
                     .then(function (success) {
                         $location.path('/projects/' + currentId);
-                    });
+                        notifyService.showSuccess('Project edited successfully!');
+                    },
+                        function (error) {
+                            notifyService.showError('Project edit unsuccessful', error);
+                        });
             }
         }
     ]);

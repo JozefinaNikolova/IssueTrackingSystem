@@ -10,7 +10,8 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects', 'is
         '$location',
         'projects',
         'users',
-        function($scope, $location, projects, users){
+        'notifyService',
+        function($scope, $location, projects, users, notifyService){
             users.getAllUsers()
                 .then(function (data) {
                     $scope.users = data;
@@ -48,7 +49,11 @@ angular.module('issueTracker.addProject', ['issueTracker.services.projects', 'is
                 projects.addProject(project)
                     .then(function (success) {
                         $location.path('/dashboard');
-                    });
+                        notifyService.showSuccess('Successfully added project!');
+                    },
+                        function (error) {
+                            notifyService.showError('Project add unsuccessful.', error);
+                        });
             }
         }
     ]);

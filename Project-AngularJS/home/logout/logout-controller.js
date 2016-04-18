@@ -9,11 +9,16 @@ angular.module('issueTracker.logout', ['issueTracker.services.authentication'])
         '$scope',
         '$location',
         'authentication',
-        function($scope, $location, authentication){
+        'notifyService',
+        function($scope, $location, authentication, notifyService){
             authentication.logout()
                 .then(function (success) {
                     authentication.clearCredentials();
                     $location.path('/');
-                });
+                    notifyService.showSuccess('Successfully logged out!');
+                },
+                    function (error) {
+                        notifyService.showError('Logout unsuccessful.', error);
+                    });
         }
     ]);
