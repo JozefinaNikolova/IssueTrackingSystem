@@ -8,8 +8,10 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
     .controller('ViewIssueController', [
         '$scope',
         '$routeParams',
+        '$route',
         'issues',
-        function($scope, $routeParams, issues){
+        'notifyService',
+        function($scope, $routeParams, $route, issues, notifyService){
             var currentId = $routeParams.id;
             issues.getIssuesById(currentId)
                 .then(function (data) {
@@ -23,5 +25,16 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
 
                     $scope.issue = data;
                 });
+
+            $scope.changeStatus = function (id) {
+                issues.editIssueStatus(currentId, id)
+                    .then(function (success) {
+                        $route.reload();
+                        notifyService.showSuccess('Status changed successfully!');
+                    },
+                        function (error) {
+                            notifyService.showError('Unable to change status.', data);
+                        })
+            };
         }
     ]);

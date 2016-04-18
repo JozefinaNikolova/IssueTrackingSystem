@@ -21,7 +21,7 @@
             <ul id="statuses">
                 <li ng-repeat="status in issue.AvailableStatuses">
                     {{status.Name}}
-                    <button class="btn btn-md btn-success">Change</button>
+                    <button class="btn btn-md btn-success" ng-click="$parent.changeStatus(status.Id)">Change</button>
                 </li>
             </ul>
         </div>

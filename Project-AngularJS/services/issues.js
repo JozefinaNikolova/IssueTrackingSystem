@@ -82,10 +82,10 @@ angular.module('issueTracker.services.issues', [])
                 return deferred.promise;
             }
 
-            function editIssueStatus(id, statusId, data) {
+            function editIssueStatus(id, statusId) {
                 var deferred = $q.defer();
 
-                $http.put(BASE_URL + 'issues/' + id +'/changestatus?statusid=' + statusId, data)
+                $http.put(BASE_URL + 'issues/' + id +'/changestatus?statusid=' + statusId, null)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
