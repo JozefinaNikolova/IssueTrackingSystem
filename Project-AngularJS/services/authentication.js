@@ -59,11 +59,16 @@ angular.module('issueTracker.services.authentication', [])
                 delete $http.defaults.headers.common.Authorization;
             }
 
+            function isLogged(){
+                return sessionStorage['currentUser'] != undefined;
+            }
+
             return {
                 registerUser: registerUser,
                 loginUser: loginUser,
                 logout: logout,
                 setCredentials: setCredentials,
-                clearCredentials: clearCredentials
+                clearCredentials: clearCredentials,
+                isLogged: isLogged
             }
         }]);

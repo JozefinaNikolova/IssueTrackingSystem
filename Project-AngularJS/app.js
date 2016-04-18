@@ -12,9 +12,17 @@ angular.module('issueTracker', [
         'issueTracker.editProject',
         'issueTracker.viewIssue',
         'issueTracker.editIssue',
-        'issueTracker.addIssueToProject'
+        'issueTracker.addIssueToProject',
+        'issueTracker.services.authentication'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
+    }])
+    .run(['$rootScope', '$location', 'authentication', function($rootScope, $location, authentication) {
+        $rootScope.$on('$locationChangeStart', function(event) {
+            if(!authentication.isLogged()) {
+                $location.path('/');
+            }
+        });
     }])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/');
