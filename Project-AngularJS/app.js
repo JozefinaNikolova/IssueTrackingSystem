@@ -1,5 +1,6 @@
 angular.module('issueTracker', [
         'ngRoute',
+        'ui.bootstrap.pagination',
         'issueTracker.home',
         'issueTracker.dashboard',
         'issueTracker.addProject',
@@ -16,3 +17,11 @@ angular.module('issueTracker', [
         $routeProvider.otherwise({redirectTo: '/'});
     }])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/');
+
+
+$rootScope.$on('$locationChangeStart', function (event) {
+        if (!sessionStorage.currentUser) {
+                // Authorization check: anonymous site visitors cannot access user routes
+                $location.path("/");
+        }
+});
