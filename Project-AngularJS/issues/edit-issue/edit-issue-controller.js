@@ -8,12 +8,13 @@ angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issue
     .controller('EditIssueController', [
         '$scope',
         '$routeParams',
+        '$route',
         '$location',
         'issues',
         'users',
         'projects',
         'notifyService',
-        function($scope, $routeParams, $location, issues, users, projects, notifyService){
+        function($scope, $routeParams, $route, $location, issues, users, projects, notifyService){
             var currentId = $routeParams.id;
 
             users.getAllUsers()
@@ -40,7 +41,6 @@ angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issue
                         });
 
                     console.log($scope.issue);
-                    console.log($scope.priorities);
                 });
 
             $scope.editIssue = function (issue) {
@@ -66,6 +66,17 @@ angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issue
                         function (error) {
                             notifyService.showError('Unsuccessful issue edit.', error);
                         });
-            }
+            };
+
+            $scope.changeStatus = function (id) {
+                issues.editIssueStatus(currentId, id)
+                    .then(function (success) {
+                            $route.reload();
+                            notifyService.showSuccess('Status changed successfully!');
+                        },
+                        function (error) {
+                            notifyService.showError('Unable to change status.', data);
+                        })
+            };
         }
     ]);

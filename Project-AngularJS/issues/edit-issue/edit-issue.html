@@ -47,33 +47,11 @@
         <form style="width:48%" class="pull-right">
             <h3>Status transition scheme</h3>
             <ul id="statuses">
-                <li><strong>Open</strong></li>
-                <li>
-                    In Progress <button class="btn btn-sm btn-info">transition to status</button>
-                    <ul>
-                        <li>
-                            Closed
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    Resolved <button class="btn btn-sm btn-info">transition to status</button>
-                    <ul>
-                        <li>
-                            Closed
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            Reopened
-                            <ul>
-                                <li>
-                                    Closed
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <li><strong>{{issue.Status.Name}}</strong></li>
+                <li ng-repeat="status in issue.AvailableStatuses">
+                    {{status.Name}} <button class="btn btn-sm btn-info" ng-click="$parent.changeStatus(status.Id)">Transition to status</button>
                 </li>
             </ul>
         </form>
     </div>
+</div>

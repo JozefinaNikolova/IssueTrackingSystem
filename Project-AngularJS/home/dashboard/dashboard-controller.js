@@ -11,7 +11,7 @@ angular.module('issueTracker.dashboard', ['issueTracker.services.issues', 'issue
         'issues',
         'authentication',
         function($scope, $location, issues, authentication){
-            issues.getUserIssues(10, 1, 'DueDate desc')
+            issues.getUserIssues(20, 1, 'DueDate desc')
                 .then(function (userIssues) {
                     userIssues.TotalCount = userIssues.Issues.length;
                     console.log(userIssues.TotalCount);
@@ -24,11 +24,11 @@ angular.module('issueTracker.dashboard', ['issueTracker.services.issues', 'issue
                 'pageSize': 2
             };
 
-            $scope.reloadIssues = function() {
-                issues.getUserIssues(
-                    $scope.issueParams,
-                    function success(data) {
-                        // TODO: put the issues in the scope
+                        $scope.reloadIssues = function() {
+                            issues.getUserIssues(
+                                $scope.issueParams,
+                                function success(data) {
+                                    // TODO: put the issues in the scope
                         console.log(data);
                     },
                     function error(err) {
