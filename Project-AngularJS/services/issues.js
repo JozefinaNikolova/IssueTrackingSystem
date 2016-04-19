@@ -7,7 +7,6 @@ angular.module('issueTracker.services.issues', [])
 
             function getUserIssues(pageSize, pageNumber, orderBy) {
                 var deferred = $q.defer();
-
                 $http.get(BASE_URL + 'issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
                     .then(function(response) {
                         deferred.resolve(response.data);

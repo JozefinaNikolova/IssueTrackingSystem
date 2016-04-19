@@ -28,6 +28,10 @@ angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'iss
                     data.Labels = labels.join(', ');
                     data.Priorities = priorities.join(', ');
 
+                    data.isLead = function () {
+                        return data.Lead.Username == sessionStorage.username;
+                    };
+
                     $scope.project = data;
                 });
 

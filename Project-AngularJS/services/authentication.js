@@ -50,6 +50,7 @@ angular.module('issueTracker.services.authentication', [])
 
             function setCredentials(data) {
                 sessionStorage.currentUser = JSON.stringify(data);
+                sessionStorage.username = data.userName;
                 $http.defaults.headers.common.Authorization =
                     'Bearer ' + data.access_token;
             }
