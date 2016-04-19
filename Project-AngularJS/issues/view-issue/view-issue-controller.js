@@ -27,6 +27,10 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
                         return data.Assignee.Username == sessionStorage.username;
                     };
 
+                    data.isLead = function () {
+                        return data.Author.Username == sessionStorage.username;
+                    };
+
                     $scope.issue = data;
                 });
 

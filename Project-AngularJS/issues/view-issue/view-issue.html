@@ -14,7 +14,7 @@
             <p>Status: {{issue.Status.Name}}</p>
             <p>Labels: {{issue.Labels}}</p>
 
-            <a href="#/issues/{{issue.Id}}/edit"><button class="btn btn-lg btn-success">Edit</button></a>
+            <a ng-if="issue.isAssignee() || issue.isLead()" href="#/issues/{{issue.Id}}/edit"><button class="btn btn-lg btn-success">Edit</button></a>
         </div>
         <div class="col-md-6" ng-if="issue.isAssignee()">
             <h3>Available Statuses</h3>
