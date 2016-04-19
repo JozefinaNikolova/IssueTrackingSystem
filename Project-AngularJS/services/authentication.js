@@ -12,7 +12,7 @@ angular.module('issueTracker.services.authentication', [])
                     .then(function(response) {
                         deferred.resolve(response.data);
 
-                        $http.get(BASE_URL + 'users/me');
+                        //$http.get(BASE_URL + 'users/me');
                     }, function(error) {
                         deferred.reject(error);
                     });
