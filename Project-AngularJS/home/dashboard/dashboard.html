@@ -20,9 +20,9 @@
         </thead>
         <tbody ng-repeat="issue in issues">
         <tr>
-            <td>{{issue.Title}}</td>
+            <td><a href="#/issues/{{issue.Id}}">{{issue.Title}}</a></td>
             <td>{{issue.Description}}</td>
-            <td>{{issue.Project.Name}}</td>
+            <td><a href="#/projects/{{issue.Project.Id}}">{{issue.Project.Name}}</a></td>
             <td>{{issue.DueDate}}</td>
         </tr>
         </tbody>
