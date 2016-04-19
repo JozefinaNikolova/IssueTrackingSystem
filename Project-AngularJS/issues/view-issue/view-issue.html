@@ -16,7 +16,7 @@
 
             <a href="#/issues/{{issue.Id}}/edit"><button class="btn btn-lg btn-success">Edit</button></a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" ng-if="issue.isAssignee()">
             <h3>Available Statuses</h3>
             <ul id="statuses">
                 <li ng-repeat="status in issue.AvailableStatuses">

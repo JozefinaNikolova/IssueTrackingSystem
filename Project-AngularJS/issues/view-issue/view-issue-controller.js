@@ -23,6 +23,10 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
 
                     data.Labels = labels.join(', ');
 
+                    data.isAssignee = function () {
+                        return data.Assignee.Username == sessionStorage.username;
+                    };
+
                     $scope.issue = data;
                 });
 
