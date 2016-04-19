@@ -35,6 +35,7 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'i
                     data.Priorities = priorities.join(', ');
 
                     $scope.project = data;
+                    console.log(data);
                 });
 
             $scope.editProject = function (project) {
@@ -62,10 +63,18 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'i
                     };
                 }
 
-                project.Priorities = priorities;
-                project.Labels = labels;
+                var editedProject = {
+                    Name: project.Name,
+                    LeadId: project.Lead.Id,
+                    ProjectKey: project.ProjectKey,
+                    Priorities: priorities,
+                    Labels: labels,
+                    Description: project.Description
+                };
 
-                projects.editProjectById(currentId, project)
+                console.log(editedProject);
+
+                projects.editProjectById(currentId, editedProject)
                     .then(function (success) {
                         $location.path('/projects/' + currentId);
                         notifyService.showSuccess('Project edited successfully!');

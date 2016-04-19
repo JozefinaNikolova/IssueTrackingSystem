@@ -33,6 +33,7 @@ angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'iss
                     };
 
                     $scope.project = data;
+                    console.log(data);
                 });
 
             issues.getProjectsIssuesById(currentId)
