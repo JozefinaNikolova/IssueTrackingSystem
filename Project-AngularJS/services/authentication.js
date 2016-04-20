@@ -48,6 +48,19 @@ angular.module('issueTracker.services.authentication', [])
                 return deferred.promise;
             }
 
+            function changePassword(user){
+                var deferred = $q.defer();
+
+                $http.post(BASE_URL + 'api/Account/ChangePassword', user)
+                    .then(function success() {
+                        deferred.resolve()
+                    }, function error(err) {
+                        deferred.reject(err);
+                    });
+
+                return deferred.promise;
+            }
+
             function setCredentials(data) {
                 sessionStorage.currentUser = JSON.stringify(data);
                 sessionStorage.username = data.userName;
@@ -68,6 +81,7 @@ angular.module('issueTracker.services.authentication', [])
                 registerUser: registerUser,
                 loginUser: loginUser,
                 logout: logout,
+                changePassword: changePassword,
                 setCredentials: setCredentials,
                 clearCredentials: clearCredentials,
                 isLogged: isLogged
