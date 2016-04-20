@@ -17,6 +17,16 @@
             </div >
         </div>
         <div class="col-md-5">
+            <button class="btn btn-md btn-success" ng-click="changeFilter('MyIssues')">My Issues</button>
+            <button class="btn btn-md btn-success" ng-click="changeFilter('AllIssues')">All Issues</button><br/>
+            <p>Search by:</p>
+            <label for="search-assignee">Assignee name: </label>
+            <input type="text" id="search-assignee" ng-model="search.Assignee.Username" placeholder=" Assignee username"><br/>
+            <label for="search-date">Due date: </label>
+            <input type="text" id="search-date" ng-model="search.DueDate" placeholder=" yyyy-MM-dd"><br/>
+            <label for="search-title">Title: </label>
+            <input type="text" id="search-title" ng-model="search.Title" placeholder=" Issue title">
+
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -26,7 +36,7 @@
                     <td>Due Date</td>
                 </tr>
                 </thead>
-                <tbody ng-repeat="issue in issues">
+                <tbody ng-repeat="issue in issues | filter: search">
                 <tr>
                     <td><a href="#/issues/{{issue.Id}}">{{issue.Title}}</a></td>
                     <td>{{issue.Description}}</td>

@@ -9,10 +9,9 @@ angular.module('issueTracker.allProjects', ['issueTracker.services.projects'])
         '$scope',
         'projects',
         function($scope, projects){
-            projects.getAllProjects(100, 1, ' ')
+            projects.getAllProjects(300)
                 .then(function (data) {
-                    console.log(data);
-                    $scope.allProjects = data.Projects;
+                    $scope.allProjects = data;
                 });
         }
     ]);

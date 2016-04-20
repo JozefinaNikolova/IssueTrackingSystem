@@ -21,7 +21,6 @@ angular.module('issueTracker.viewProject', [
             users.getCurrentUser()
                 .then(function (data) {
                     $scope.isAdmin = data.data.isAdmin;
-                    console.log($scope.isAdmin)
                 });
 
             projects.getProjectById(currentId)
@@ -47,10 +46,31 @@ angular.module('issueTracker.viewProject', [
                     console.log(data);
                 });
 
-            issues.getProjectsIssuesById(currentId)
-                .then(function (data) {
-                    $scope.issues = data;
-                    console.log(data);
-                });
+            var allIssues = function () {
+                issues.getProjectsIssuesById(currentId)
+                    .then(function (data) {
+                        $scope.issues = data;
+                    });
+            };
+
+            var myIssues = function () {
+                issues.getProjectsIssuesById(currentId)
+                    .then(function (data) {
+                        $scope.issues = data.filter(function (issue) {
+                            return issue.Assignee.Username == sessionStorage.username;
+                        })
+                    });
+            };
+
+            myIssues();
+
+            $scope.changeFilter = function(filter){
+                if(filter == 'MyIssues'){
+                    myIssues();
+                }
+                else if(filter == 'AllIssues'){
+                    allIssues();
+                }
+            }
         }
     ]);

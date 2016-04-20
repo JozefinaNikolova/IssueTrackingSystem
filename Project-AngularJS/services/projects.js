@@ -5,10 +5,10 @@ angular.module('issueTracker.services.projects', [])
         'BASE_URL',
         function($http, $q, BASE_URL) {
 
-            function getAllProjects(pageSize, pageNumber, filter){
+            function getAllProjects(){
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Projects/?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&filter=' + filter)
+                $http.get(BASE_URL + 'Projects/')
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {

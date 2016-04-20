@@ -10,7 +10,7 @@
         <div class="form-group">
             <label for="issue-assignee">Assignee</label>
             <select id="issue-assignee" class="form-control" ng-model="issue.AssigneeId">
-                <option ng-repeat="user in users"
+                <option ng-repeat="user in users | orderBy: 'Username'"
                         value="{{user.Id}}">
                     {{user.Username}}
                 </option>
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="issue-project-id">Project</label>
             <select id="issue-project-id" class="form-control" ng-model="issue.ProjectId" ng-change="getPriorities()">
-                <option ng-repeat="project in projects"
+                <option ng-repeat="project in projects | orderBy: 'Name'"
                         value="{{project.Id}}">
                     {{project.Name}}
                 </option>

@@ -10,7 +10,7 @@
         <div class="form-group">
             <label for="issue-assignee">Assignee</label>
             <select id="issue-assignee" class="form-control" ng-model="issue.AssigneeId">
-                <option ng-repeat="user in users"
+                <option ng-repeat="user in users | orderBy: 'Username'"
                         value="{{user.Id}}">
                     {{user.Username}}
                 </option>

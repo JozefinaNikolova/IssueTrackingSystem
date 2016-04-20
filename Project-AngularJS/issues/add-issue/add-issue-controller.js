@@ -23,6 +23,7 @@ angular.module('issueTracker.addIssue', [
 
             projects.getAllProjects()
                 .then(function (data) {
+                    console.log(data)
                     $scope.projects = data;
                 });
 
@@ -55,7 +56,7 @@ angular.module('issueTracker.addIssue', [
                         notifyService.showSuccess('Issue added successfully!');
                     },
                         function (error) {
-                            notifyService.showError('Issue add unsuccessful', error);
+                            notifyService.show
                         });
             }
         }
