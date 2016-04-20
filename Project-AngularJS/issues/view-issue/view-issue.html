@@ -26,4 +26,12 @@
             </ul>
         </div>
     </div>
+    <div class="modal-body row">
+        <h3>Comments</h3>
+        <div class="form-group">
+            <label for="comment-text">Text:</label>
+            <textarea id="comment-text" class="form-control" ng-model="newComment"></textarea>
+        </div>
+        <button class="btn btn-md btn-success" ng-click="addComment(newComment)">Add comment</button>
+    </div>
 </div>
