@@ -1,4 +1,4 @@
-angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
+angular.module('issueTracker.viewIssue', ['issueTracker.services.issues', 'issueTracker.services.projects'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/issues/:id', {
             templateUrl: 'issues/view-issue/view-issue.html',
@@ -10,8 +10,9 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
         '$routeParams',
         '$route',
         'issues',
+        'projects',
         'notifyService',
-        function($scope, $routeParams, $route, issues, notifyService){
+        function($scope, $routeParams, $route, issues, projects, notifyService){
             var currentId = $routeParams.id;
             issues.getIssuesById(currentId)
                 .then(function (data) {
@@ -27,12 +28,32 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
                         return data.Assignee.Username == sessionStorage.username;
                     };
 
-                    data.isLead = function () {
-                        return data.Author.Username == sessionStorage.username;
-                    };
-
                     $scope.issue = data;
+
+                    projects.getProjectById(data.Project.Id)
+                        .then(function (project) {
+                            $scope.isLead = function () {
+                                if(project.Lead.Id == sessionStorage.username){
+                                    return true;
+                                }
+                                return false;
+                            }
+                        });
+
+                    issues.getProjectsIssuesById(data.Project.Id)
+                        .then(function (projectIssues) {
+                            $scope.isAssociated = function () {
+                                for (var i = 0; i < projectIssues.length; i++) {
+                                    var prIssue = projectIssues[i];
+                                    if(prIssue.Assignee.Username == sessionStorage.username){
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            };
+                        })
                 });
+
 
             issues.getIssueComments(currentId)
                 .then(function (data) {
