@@ -44,7 +44,7 @@
             </div>
             <button type="submit" class="btn btn-success" ng-click="editIssue(issue)">Edit Issue</button>
         </form>
-        <form style="width:48%" class="pull-right">
+        <form style="width:48%" class="pull-right" ng-if="issue.IsAssignee()">
             <h3>Status transition scheme</h3>
             <ul id="statuses">
                 <li><strong>{{issue.Status.Name}}</strong></li>

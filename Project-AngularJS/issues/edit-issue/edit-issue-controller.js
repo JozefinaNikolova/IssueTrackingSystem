@@ -32,6 +32,10 @@ angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issue
 
                     data.Labels = labels.join(', ');
 
+                    data.isAssignee = function () {
+                        return data.Assignee.Username == sessionStorage.username;
+                    };
+
                     $scope.issue = data;
 
                     projects.getProjectById(data.Project.Id)
