@@ -18,7 +18,21 @@ angular.module('issueTracker.services.users', [])
                 return deferred.promise;
             }
 
+            function getCurrentUser() {
+                var deferred = $q.defer();
+
+                $http.get(BASE_URL + 'Users/me')
+                    .then(function success(data) {
+                        deferred.resolve(data)
+                    }, function error(error) {
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            }
+
             return {
-                getAllUsers: getAllUsers
+                getAllUsers: getAllUsers,
+                getCurrentUser: getCurrentUser
             }
         }]);

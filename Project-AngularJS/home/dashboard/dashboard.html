@@ -29,6 +29,8 @@
         </tbody>
     </table>
 
-    <a href="#/add-project"><button class="btn btn-lg btn-success">Add New Project</button></a>
-    <a href="#/add-issue"><button class="btn btn-lg btn-success">Add New Issue</button></a>
+    <div ng-if="isAdmin">
+        <a href="#/add-project"><button class="btn btn-lg btn-success">Add New Project</button></a>
+        <a href="#/add-issue"><button class="btn btn-lg btn-success">Add New Issue</button></a>
+    </div>
 </div>
