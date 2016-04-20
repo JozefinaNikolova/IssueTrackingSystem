@@ -33,7 +33,7 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues', 'issue
                     projects.getProjectById(data.Project.Id)
                         .then(function (project) {
                             $scope.isLead = function () {
-                                if(project.Lead.Id == sessionStorage.username){
+                                if(project.Lead.Username == sessionStorage.username){
                                     return true;
                                 }
                                 return false;

@@ -40,7 +40,13 @@ angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issue
 
                     projects.getProjectById(data.Project.Id)
                         .then(function (projectData) {
-                            console.log(projectData);
+                            $scope.isLead = function () {
+                                if(projectData.Lead.Username == sessionStorage.username){
+                                    return true;
+                                }
+                                return false;
+                            };
+
                             $scope.priorities = projectData.Priorities;
                         });
 
@@ -62,7 +68,16 @@ angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issue
 
                 issue.Labels = labels;
 
-                issues.editIssueById(currentId, issue)
+                var editedIssue = {
+                    Title: issue.Title,
+                    AssigneeId: issue.Assignee.Id,
+                    PriorityId: issue.Priority.Id,
+                    DueDate: issue.DueDate,
+                    Labels: labels,
+                    Description: issue.Description
+                };
+
+                issues.editIssueById(currentId, editedIssue)
                     .then(function (success) {
                         $location.path('/issues/' + currentId);
                         notifyService.showSuccess('Issue edited successfully!');
