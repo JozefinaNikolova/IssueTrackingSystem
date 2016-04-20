@@ -1,4 +1,8 @@
-angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'issueTracker.services.projects'])
+angular.module('issueTracker.viewProject', [
+    'issueTracker.services.issues',
+    'issueTracker.services.projects',
+    'issueTracker.services.users'
+])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/projects/:id', {
             templateUrl: 'projects/view-project/view-project.html',
@@ -11,8 +15,15 @@ angular.module('issueTracker.viewProject', ['issueTracker.services.issues', 'iss
         '$location',
         'issues',
         'projects',
-        function($scope, $routeParams, $location, issues, projects){
+        'users',
+        function($scope, $routeParams, $location, issues, projects, users){
             var currentId = $routeParams.id;
+            users.getCurrentUser()
+                .then(function (data) {
+                    $scope.isAdmin = data.data.isAdmin;
+                    console.log($scope.isAdmin)
+                });
+
             projects.getProjectById(currentId)
                 .then(function (data) {
                     var labels = [], priorities = [];

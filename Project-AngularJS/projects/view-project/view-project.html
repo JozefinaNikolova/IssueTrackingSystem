@@ -11,7 +11,7 @@
             <p>Priorities: {{project.Priorities}}</p>
 
 
-            <div ng-if="project.isLead()">
+            <div ng-if="project.isLead() || isAdmin">
                 <a href="#/projects/{{project.Id}}/edit"><button class="btn btn-md btn-success">Edit</button></a>
                 <a  href="#/projects/{{project.Id}}/add-issue"><button class="btn btn-md btn-success">Add New Issue</button></a>
             </div >

@@ -26,7 +26,6 @@ angular.module('issueTracker.dashboard', [
                 users.getCurrentUser()
                     .then(function (data) {
                         $scope.isAdmin = data.data.isAdmin;
-                        console.log(data);
                     });
 
                 $scope.issueParams = {
