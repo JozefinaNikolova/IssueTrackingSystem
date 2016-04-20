@@ -34,6 +34,12 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
                     $scope.issue = data;
                 });
 
+            issues.getIssueComments(currentId)
+                .then(function (data) {
+                    $scope.comments = data;
+                    console.log(data);
+                });
+
             $scope.changeStatus = function (id) {
                 issues.editIssueStatus(currentId, id)
                     .then(function (success) {
@@ -44,5 +50,16 @@ angular.module('issueTracker.viewIssue', ['issueTracker.services.issues'])
                             notifyService.showError('Unable to change status.', data);
                         })
             };
+
+            $scope.addComment = function(comment){
+                issues.addCommentToIssue(currentId, comment)
+                    .then(function (success) {
+                        $route.reload();
+                        notifyService.showSuccess('Comment added successfully!');
+                    },
+                        function (error) {
+                            notifyService.showError('Unable to add comment', error);
+                        })
+            }
         }
     ]);
