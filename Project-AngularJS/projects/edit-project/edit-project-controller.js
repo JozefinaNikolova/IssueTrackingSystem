@@ -18,6 +18,11 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'i
                     $scope.users = data;
                 });
 
+            users.getCurrentUser()
+                .then(function (data) {
+                    $scope.isAdmin = data.data.isAdmin;
+                });
+
             var currentId = $routeParams.id;
             projects.getProjectById(currentId)
                 .then(function (data) {
@@ -71,8 +76,6 @@ angular.module('issueTracker.editProject', ['issueTracker.services.projects', 'i
                     Labels: labels,
                     Description: project.Description
                 };
-
-                console.log(editedProject);
 
                 projects.editProjectById(currentId, editedProject)
                     .then(function (success) {
