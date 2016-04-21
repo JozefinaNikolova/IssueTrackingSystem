@@ -1,5 +1,6 @@
 angular.module('issueTracker', [
         'ngRoute',
+        'ngCookies',
         'issueTracker.notifyService',
         'issueTracker.home',
         'issueTracker.dashboard',
@@ -23,6 +24,7 @@ angular.module('issueTracker', [
             if(!authentication.isLogged()) {
                 $location.path('/');
             }
+            authentication.refreshCookie();
         });
     }])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/');

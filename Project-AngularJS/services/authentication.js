@@ -1,9 +1,12 @@
-angular.module('issueTracker.services.authentication', [])
+angular.module('issueTracker.services.authentication', ['issueTracker.services.users'])
     .factory('authentication', [
         '$http',
+        '$cookies',
         '$q',
+        'users',
         'BASE_URL',
-        function($http, $q, BASE_URL) {
+        function($http, $cookies, $q, users, BASE_URL) {
+            var AUTHENTICATION_COOKIE_KEY = '!__Authentication_Cookie_Key__!';
 
             function registerUser(user) {
                 var deferred = $q.defer();
@@ -64,11 +67,24 @@ angular.module('issueTracker.services.authentication', [])
                 sessionStorage.username = data.userName;
                 $http.defaults.headers.common.Authorization =
                     'Bearer ' + data.access_token;
+                $cookies.put(AUTHENTICATION_COOKIE_KEY, data.access_token);
             }
 
             function clearCredentials() {
                 delete sessionStorage.currentUser;
                 delete $http.defaults.headers.common.Authorization;
+                $cookies.remove(AUTHENTICATION_COOKIE_KEY);
+            }
+
+            function refreshCookie() {
+                if (isLogged()) {
+                    $http.defaults.headers.common.Authorization = 'Bearer ' + $cookies.get(AUTHENTICATION_COOKIE_KEY);
+                    users.getCurrentUser()
+                        .then(function (data) {
+                            sessionStorage.currentUser = JSON.stringify(data);
+                            sessionStorage.username = data.userName;
+                        });
+                }
             }
 
             function isLogged(){
@@ -82,6 +98,7 @@ angular.module('issueTracker.services.authentication', [])
                 changePassword: changePassword,
                 setCredentials: setCredentials,
                 clearCredentials: clearCredentials,
+                refreshCookie: refreshCookie,
                 isLogged: isLogged
             }
         }]);
