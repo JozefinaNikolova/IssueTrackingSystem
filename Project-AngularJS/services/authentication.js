@@ -79,11 +79,6 @@ angular.module('issueTracker.services.authentication', ['issueTracker.services.u
             function refreshCookie() {
                 if (isLogged()) {
                     $http.defaults.headers.common.Authorization = 'Bearer ' + $cookies.get(AUTHENTICATION_COOKIE_KEY);
-                    users.getCurrentUser()
-                        .then(function (data) {
-                            sessionStorage.currentUser = JSON.stringify(data);
-                            sessionStorage.username = data.userName;
-                        });
                 }
             }
 

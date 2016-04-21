@@ -9,7 +9,7 @@
                 <label for="issue-title">Title</label>
                 <input type="text" class="form-control" id="issue-title" ng-model="issue.Title">
             </div>
-            <div class="form-group" ng-if="isLead()">
+            <div class="form-group" ng-if="isLead() || isAdmin">
                 <label for="issue-assignee-admin">Assignee</label>
                 <select class="form-control" id="issue-assignee-admin" ng-model="issue.Assignee.Id">
                     <option ng-selected="{{user.Id == issue.Assignee.Id}}"
@@ -19,7 +19,7 @@
                     </option>
                 </select>
             </div>
-            <div class="form-group" ng-if="!isLead()">
+            <div class="form-group" ng-if="!isLead() && !isAdmin">
                 <label for="issue-assignee">Assignee</label>
                 <input type="text" id="issue-assignee" class="form-control" ng-model="issue.Assignee.Username" readonly="readonly"/>
             </div>

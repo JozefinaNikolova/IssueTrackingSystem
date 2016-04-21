@@ -17,9 +17,7 @@ angular.module('issueTracker.dashboard', [
         function($scope, $location, issues, authentication, users){
               issues.getUserIssues(100, 1, 'DueDate desc')
                   .then(function (userIssues) {
-                      userIssues.TotalCount = userIssues.Issues.length;
                       $scope.issues = userIssues.Issues;
-                      console.log(userIssues);
                   });
 
                 users.getCurrentUser()

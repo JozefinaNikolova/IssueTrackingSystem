@@ -43,7 +43,6 @@ angular.module('issueTracker.viewProject', [
                     };
 
                     $scope.project = data;
-                    console.log(data);
                 });
 
             var allIssues = function () {
@@ -58,7 +57,7 @@ angular.module('issueTracker.viewProject', [
                     .then(function (data) {
                         $scope.issues = data.filter(function (issue) {
                             return issue.Assignee.Username == sessionStorage.username;
-                        })
+                        });
                     });
             };
 

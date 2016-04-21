@@ -17,6 +17,11 @@ angular.module('issueTracker.editIssue', ['issueTracker.services.issues', 'issue
         function($scope, $routeParams, $route, $location, issues, users, projects, notifyService){
             var currentId = $routeParams.id;
 
+            users.getCurrentUser()
+                .then(function (data) {
+                    $scope.isAdmin = data.data.isAdmin;
+                });
+
             users.getAllUsers()
                 .then(function (data) {
                     $scope.users = data;
