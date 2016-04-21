@@ -13,7 +13,7 @@
                 <label for="issue-assignee-admin">Assignee</label>
                 <select class="form-control" id="issue-assignee-admin" ng-model="issue.Assignee.Id">
                     <option ng-selected="{{user.Id == issue.Assignee.Id}}"
-                            ng-repeat="user in users"
+                            ng-repeat="user in users | orderBy: 'Username'"
                             value="{{user.Id}}">
                         {{user.Username}}
                     </option>

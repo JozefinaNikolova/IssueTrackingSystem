@@ -15,7 +15,7 @@
     <div class="form-group"  ng-if="isAdmin">
       <label for="project-leader-admin">Leader</label>
         <select id="project-leader-admin" class="form-control" ng-model="project.Lead.Id">
-            <option ng-repeat="user in users" ng-selected="{{user.Id == project.Lead.Id}}" value="{{user.Id}}">
+            <option ng-repeat="user in users | orderBy: 'Username'" ng-selected="{{user.Id == project.Lead.Id}}" value="{{user.Id}}">
                 {{user.Username}}
             </option>
         </select>
