@@ -7,7 +7,7 @@
 <a href="#/projects"><button class="btn-lg btn-success">Projects</button></a>
 <h2 style="margin-top: 0"> Edit Project</h2>
 <div>
-  <form style="width:48%" class="pull-left">
+  <form style="width:48%">
   <div class="form-group">
       <label for="project-name">Name</label>
       <input type="text" class="form-control" id="project-name" placeholder="Project Name" ng-model="project.Name">
@@ -42,38 +42,6 @@
       <textarea class="form-control" id="project-description" placeholder="Description" ng-model="project.Description"></textarea>
     </div>
     <button type="submit" class="btn btn-success" ng-click="editProject(project)">Edit Project</button>
-  </form>
-  <form style="width:48%" class="pull-right">
-  <h3>Status transition scheme</h3>
-    <ul id="statuses">
-      <li>Open <button class="btn btn-sm btn-info">add element</button> <button class="btn btn-sm btn-info">add child element</button></li>
-      <li>
-      In Progress <button class="btn btn-sm btn-info">add element</button> <button class="btn btn-sm btn-info">add child element</button>
-        <ul>
-          <li>
-            Closed <button class="btn btn-sm btn-info">add element</button> <button class="btn btn-sm btn-info">add child element</button>
-          </li>
-        </ul>
-      </li>
-      <li>
-      Resolved <button class="btn btn-sm btn-info">add element</button> <button class="btn btn-sm btn-info">add child element</button>
-        <ul>
-          <li>
-            Closed <button class="btn btn-sm btn-info">add element</button> <button class="btn btn-sm btn-info">add child element</button>
-          </li>
-        </ul>
-        <ul>
-              <li>
-          Reopened <button class="btn btn-sm btn-info">add element</button> <button class="btn btn-sm btn-info">add child element</button>
-          <ul>
-              <li>
-                Closed <button class="btn btn-sm btn-info">add element</button> <button class="btn btn-sm btn-info">add child element</button>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
   </form>
   </div>
   </div>
